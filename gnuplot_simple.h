@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 // install gnuplot
 // set environment  (e.g.) PATH = C:\Program files\gnuplot\bin
@@ -20,7 +21,7 @@ public:
         pipe = popen("gnuplot", "w");
 #endif
         if (pipe == nullptr)
-            throw std::exception("could not open pipe");
+            throw std::runtime_error(std::string("could not open pipe").c_str());
 
         fprintf(pipe, "set term wx\n");
     }
